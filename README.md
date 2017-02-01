@@ -1,4 +1,4 @@
-# docker-counselor-consul
+# docker-consul-counselor
 
     make test
 
