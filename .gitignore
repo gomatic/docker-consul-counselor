@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!LICENSE
+!Dockerfile
+!Makefile
+!*.md
