@@ -11,7 +11,7 @@ PREFIX ?= usr/local
 #
 
 build: go/bin/counselor ## Build the consul-counselor container
-	docker build --tag consul-counselor .
+	docker build --tag gomatic/consul-counselor .
 
 go/bin/counselor:
 	mkdir -p $(dir $@)
