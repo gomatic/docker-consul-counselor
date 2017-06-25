@@ -10,13 +10,15 @@ PREFIX ?= usr/local
 
 #
 
-build: go/bin/counselor ## Build the consul-counselor container
+build: go/bin/counselor/counselor ## Build the consul-counselor container
 	docker build --tag gomatic/consul-counselor .
+
+go/bin/counselor/counselor: go/bin/counselor
+	cd $(dir $^)/counselor && make linux GOOS=linux GOARCH=amd64 && mv counselor-linux-amd64 counselor
 
 go/bin/counselor:
 	mkdir -p $(dir $@)
 	cd $(dir $@) && git clone https://github.com/gomatic/counselor
-	cd $(dir $@)/counselor && make linux GOOS=linux GOARCH=amd64 && mv counselor-linux-amd64 counselor
 
 ec2: TAG ?= discovery
 ec2: ## Run the container using EC2 tag-join. Use TAG= to assign a tag. default: TAG=discovery
